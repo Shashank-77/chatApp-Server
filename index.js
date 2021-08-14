@@ -26,7 +26,7 @@ app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 //middleware
 app.use(express.json());
-app.use(helmet());
+app.use(helmet()); 
 app.use(morgan("common"));
 
 const storage = multer.diskStorage({
@@ -56,6 +56,8 @@ app.use("/api/messages", messageRoute);
 //Initialising port value
 const port = process.env.PORT || 8800;
 
+console.log(process.env);
+console.log(process.env.PORT);
 //Starting the server and creating server variable for sockets
 const server = app.listen(port, () => {
   console.log(`Backend server is running! ${port}`);
