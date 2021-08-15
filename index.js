@@ -15,7 +15,20 @@ const path = require("path");
 const cors = require('cors')
 
 
-app.use(cors());
+const whitelist = ['https://chat-messenger-client.herokuapp.com', 'http://localhost:3000']
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions))
 
 dotenv.config();
 
