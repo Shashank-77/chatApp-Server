@@ -84,7 +84,7 @@ const server = app.listen(port, () => {
 //Socket Server begins here
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-messenger-client.herokuapp.com",
   },
 });
 
