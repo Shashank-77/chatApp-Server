@@ -12,6 +12,10 @@ const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 const router = express.Router();
 const path = require("path");
+const cors = require('cors')
+
+
+app.use(cors());
 
 dotenv.config();
 
